@@ -2,7 +2,6 @@
  * Created by user on 24/05/2014.
  */
 public class Entrada {
-    private String tipo;
     private int numAsiento;
     private String zona;
     private int idEntrada;
@@ -20,10 +19,6 @@ public class Entrada {
         this.idEntrada = idEntrada;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public void setPrecio(int precio) {
         this.precio = precio;
     }
@@ -34,10 +29,6 @@ public class Entrada {
 
     public int getNumAsiento() {
         return numAsiento;
-    }
-
-    public String getTipo() {
-        return tipo;
     }
 
     public int getPrecio() {

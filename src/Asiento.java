@@ -5,6 +5,10 @@ public class Asiento {
     private Integer numero;
     private boolean libre = true;
 
+    public Integer getNumero() {
+        return numero;
+    }
+
     public boolean isLibre() {
         return libre;
     }

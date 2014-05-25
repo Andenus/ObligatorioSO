@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,23 +8,43 @@ import java.util.List;
 public class Vendedor {
     int idVendedor;
 
-    public void vender(Zona zona, int cantEntradas, Espectaculo espectaculo) {
+    public Vendedor(int idVendedor) {
+        this.idVendedor = idVendedor;
+    }
+
+    public Entrada[] vender(Zona zona, int cantEntradas, Espectaculo espectaculo) {
         List<Entrada> entradas = espectaculo.getEntradas();
         Asiento[][] asientos = espectaculo.getAsientos().get(zona);
-        //Metodo complejo que asigna asientos...
+        Entrada[] entradasVendidas = new Entrada[cantEntradas];
         for (int i=0; i < asientos.length; i++){
-            int asientosLibres = 0;
+            List<Asiento> asientosLibres = new ArrayList<Asiento>(asientos[i].length);
             for (int j=0; j < asientos[i].length; j++){
                 if (asientos[i][j].isLibre()){
-                    asientosLibres++;
+                    asientosLibres.add(asientos[i][j]);
                 } else {
-                    if (asientosLibres >= cantEntradas){
-                        daasientos;
+                    if (asientosLibres.size() >= cantEntradas){
+                        int h = 0;
+                        for (Asiento asiento:asientosLibres){
+                            //Se ocupa el asiento
+                            asiento.setLibre(false);
+                            //Se setea el numero de asiento, la zona y el precio de la entrada
+                            Entrada entradaAAsignar = entradas.get(0);
+                            entradaAAsignar.setNumAsiento(asiento.getNumero());
+                            entradaAAsignar.setZona(zona.getNombre());
+                            entradaAAsignar.setPrecio(zona.getPrecioEntrada());
+                            //Se vende la entrada
+                            entradasVendidas[h] = entradas.get(0);
+                            h++;
+                            //Se saca la entrada de la lista de entradas no vendidas
+                            entradas.remove(0);
+                        }
                     }
                 }
             }
         }
-        System.out.println("El vendedor me dio un asiento");
+        espectaculo.setEntradas(entradas);
+        espectaculo.getAsientos().replace(zona,asientos);
+        return entradasVendidas;
     }
 
 }

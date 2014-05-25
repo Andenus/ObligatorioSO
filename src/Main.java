@@ -1,3 +1,7 @@
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,7 +13,7 @@ import java.util.List;
 public class Main {
 
     public static void main (String[] args){
-        List<Zona> zonas = new ArrayList<Zona>(6);
+        /*List<Zona> zonas = new ArrayList<Zona>(6);
         zonas.add(new Zona("uno", 3, 4));
         zonas.add(new Zona("uno", 3, 4));
         zonas.add(new Zona("uno", 3, 4));
@@ -25,6 +29,20 @@ public class Main {
 
         for (Comprador compra:comprador){
             compra.start();
+        }*/
+        List<Zona> zonas;
+        Date[] fecha;
+        JSONParser parser = new JSONParser();
+        List<Vendedor> vendedores;
+        Sistema sistema;
+        Espectaculo especctaculo;
+        Comprador[] compradores;
+        try {
+            JSONObject escenario = (JSONObject) ((JSONObject) parser.parse(new FileReader(System.getProperty("user.dir") + "\\Escenarios\\EscenariosPrueba.json"))).get("Escenario");
+            zonas = new ArrayList<Zona>(((JSONObject)escenario.get("zonas")).size());
+
+        } catch (Exception e){
+
         }
     }
 }
