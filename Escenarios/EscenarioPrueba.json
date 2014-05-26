@@ -1,169 +1,196 @@
 {
-    Escenario:{
-        Espectaculo:{
-            localidad:"Estadio Centenario",
-            cantidadEntradas:200,
-            nombre:"Audioslave",
-            fecha:"2014/05/30, 2014/05/31",
-            zonas:{
-                zonaA:{
-                    nombre:"zonaA",
-                    cantFilas:10,
-                    largoFila:10
-                },
-                zonaB:{
-                    nombre:"zonaB",
-                    cantFilas:10,
-                    largoFila:10
-                }
+   "Escenario" :
+      {
+         "Espectaculo" :
+            {
+               "localidad" : "Estadio Centenario",
+               "cantidadEntradas" : 200,
+               "nombre" : "Audioslave",
+               "fecha" : "2014/05/30, 2014/05/31",
+               "zonas" :
+                  {
+                     "zona1" :
+                        {
+                           "nombre" : "zonaA",
+                           "cantFilas" : 10,
+                           "largoFila" : 10
+                        },
+                     "zona2" :
+                        {
+                           "nombre" : "zonaB",
+                           "cantFilas" : 10,
+                           "largoFila" : 10
+                        }
+                  }
+            },
+         "Sistema" :
+            {
+               "vendedor1" : 1,
+               "vendedor2" : 2,
+               "vendedor3" : 3
+            },
+         "Compradores" :
+            {
+               "comprador1" :
+                  {
+                     "idComprador" : 1,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador2" :
+                  {
+                     "idComprador" : 2,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 10,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador3" :
+                  {
+                     "idComprador" : 3,
+                     "tipoComprador" : "",
+                     "zona" : "zonaB",
+                     "cantDeEntradas" : 5,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador4" :
+                  {
+                     "idComprador" : 4,
+                     "tipoComprador" : "",
+                     "zona" : "zonaB",
+                     "cantDeEntradas" : 8,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador5" :
+                  {
+                     "idComprador" : 5,
+                     "tipoComprador" : "",
+                     "zona" : "zonaB",
+                     "cantDeEntradas" : 10,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador6" :
+                  {
+                     "idComprador" : 6,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador7" :
+                  {
+                     "idComprador" : 7,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador8" :
+                  {
+                     "idComprador" : 8,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador9" :
+                  {
+                     "idComprador" : 9,
+                     "tipoComprador" : "",
+                     "zona" : "zonaB",
+                     "cantDeEntradas" : 2,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador10" :
+                  {
+                     "idComprador" : 10,
+                     "tipoComprador" : "",
+                     "zona" : "zonaB",
+                     "cantDeEntradas" : 6,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador11" :
+                  {
+                     "idComprador" : 11,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador12" :
+                  {
+                     "idComprador" : 12,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador13" :
+                  {
+                     "idComprador" : 13,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador14" :
+                  {
+                     "idComprador" : 14,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador15" :
+                  {
+                     "idComprador" : 15,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador16" :
+                  {
+                     "idComprador" : 16,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 9,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador17" :
+                  {
+                     "idComprador" : 17,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 4,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador18" :
+                  {
+                     "idComprador" : 18,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 4,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador19" :
+                  {
+                     "idComprador" : 19,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 5,
+                     "espectaculo" : "Audioslave"
+                  },
+               "comprador20" :
+                  {
+                     "idComprador" : 20,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 5,
+                     "espectaculo" : "Audioslave"
+                  }
             }
-        },
-        Sistema:{
-            vendedor1:1
-            vendedor2:2
-            vendedor3:3
-        }
-        Compradores{
-            comprador1:{
-                idComprador:1,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador2:{
-                idComprador:2,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:10,
-                espectaculo:"Audioslave",
-                   }
-            comprador3:{
-                idComprador:3,
-                tipoComprador:"",
-                zona:"zonaB",
-                cantDeEntradas:5,
-                espectaculo:"Audioslave",
-                   }
-            comprador4:{
-                idComprador:4,
-                tipoComprador:"",
-                zona:"zonaB",
-                cantDeEntradas:8,
-                espectaculo:"Audioslave",
-                   }
-            comprador5:{
-                idComprador:5,
-                tipoComprador:"",
-                zona:"zonaB",
-                cantDeEntradas:10,
-                espectaculo:"Audioslave",
-                   }
-            comprador6:{
-                idComprador:6,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador7:{
-                idComprador:7,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador8:{
-                idComprador:8,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador9:{
-                idComprador:9,
-                tipoComprador:"",
-                zona:"zonaB",
-                cantDeEntradas:2,
-                espectaculo:"Audioslave",
-            }
-            comprador10:{
-                idComprador:10,
-                tipoComprador:"",
-                zona:"zonaB",
-                cantDeEntradas:6,
-                espectaculo:"Audioslave",
-            }
-            comprador11:{
-                idComprador:11,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador12:{
-                idComprador:12,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador13:{
-                idComprador:13,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador14:{
-                idComprador:14,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador15:{
-                idComprador:15,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador16:{
-                idComprador:16,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:9,
-                espectaculo:"Audioslave",
-            }
-            comprador17:{
-                idComprador:17,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:4,
-                espectaculo:"Audioslave",
-            }
-            comprador18:{
-                idComprador:18,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:4,
-                espectaculo:"Audioslave",
-            }
-            comprador19:{
-                idComprador:19,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:5,
-                espectaculo:"Audioslave",
-            }
-            comprador20:{
-                idComprador:20,
-                tipoComprador:"",
-                zona:"zonaA",
-                cantDeEntradas:5,
-                espectaculo:"Audioslave",
-            }
-        }
-    }
+      }
 }

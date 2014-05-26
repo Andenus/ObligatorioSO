@@ -12,7 +12,14 @@ public class Vendedor {
         this.idVendedor = idVendedor;
     }
 
-    public Entrada[] vender(Zona zona, int cantEntradas, Espectaculo espectaculo) {
+    public Entrada[] vender(String zona, int cantEntradas, Espectaculo espectaculo) {
+        List<Zona> zonasALaVenta = espectaculo.getZonas();
+        Zona zonaSelecionada = null;
+        for (Zona zonaARecorrer:zonasALaVenta){
+            if (zonaARecorrer.getNombre().equals(zona)){
+                zonaSelecionada = zonaARecorrer;
+            }
+        };
         List<Entrada> entradas = espectaculo.getEntradas();
         Asiento[][] asientos = espectaculo.getAsientos().get(zona);
         Entrada[] entradasVendidas = new Entrada[cantEntradas];
@@ -30,8 +37,8 @@ public class Vendedor {
                             //Se setea el numero de asiento, la zona y el precio de la entrada
                             Entrada entradaAAsignar = entradas.get(0);
                             entradaAAsignar.setNumAsiento(asiento.getNumero());
-                            entradaAAsignar.setZona(zona.getNombre());
-                            entradaAAsignar.setPrecio(zona.getPrecioEntrada());
+                            entradaAAsignar.setZona(zonaSelecionada.getNombre());
+                            entradaAAsignar.setPrecio(zonaSelecionada.getPrecioEntrada());
                             //Se vende la entrada
                             entradasVendidas[h] = entradas.get(0);
                             h++;
@@ -43,7 +50,7 @@ public class Vendedor {
             }
         }
         espectaculo.setEntradas(entradas);
-        espectaculo.getAsientos().replace(zona,asientos);
+        espectaculo.getAsientos().replace(zonaSelecionada,asientos);
         return entradasVendidas;
     }
 

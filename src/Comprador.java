@@ -7,13 +7,13 @@ import java.util.concurrent.Semaphore;
 public class Comprador extends Thread {
     int idComprador;
     String tipoComprador;
-    Zona zona;
+    String zona;
     int cantDeEntradas;
     Espectaculo espectaculo;
     Sistema sistema;
     Semaphore mutex = new Semaphore(1);
 
-    public Comprador(int idComprador, String tipoComprador, Zona zona, int cantDeEntradas, Espectaculo espectaculo, Sistema sistema) {
+    public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, Espectaculo espectaculo, Sistema sistema) {
         this.idComprador = idComprador;
         this.tipoComprador = tipoComprador;
         this.zona = zona;
