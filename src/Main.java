@@ -37,10 +37,16 @@ public class Main {
         Sistema sistema;
         Espectaculo espectaculo;
         Comprador[] compradores;
+
+        /**
+         * Se leen los datos del archivo JSON. El archivo contiene lo necesario para la simulación.
+         */
         try {
             JSONObject escenario = (JSONObject) ((JSONObject) parser.parse(new FileReader(System.getProperty("user.dir") + "\\Escenarios\\EscenarioPrueba.json"))).get("Escenario");
             JSONObject espectaculoDatos = (JSONObject) escenario.get("Espectaculo");
             zonas = new ArrayList<Zona>(((JSONObject)espectaculoDatos.get("zonas")).toString().split("},").length);
+
+
             for (int i = 1; i < 3; i++) {
                 String nombreNuevaZona = (String)((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+i))).get("nombre");
                 int largoFilas = ((Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+i))).get("largoFila")).intValue();
@@ -81,6 +87,8 @@ public class Main {
             for (Comprador comprador:compradores){
                 comprador.start();
             }
+
+
 
         } catch (Exception e){
             e.printStackTrace();

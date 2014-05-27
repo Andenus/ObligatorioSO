@@ -5,13 +5,15 @@ import java.util.concurrent.Semaphore;
  * Created by user on 24/05/2014.
  */
 public class Comprador extends Thread {
-    int idComprador;
-    String tipoComprador;
-    String zona;
-    int cantDeEntradas;
-    Espectaculo espectaculo;
-    Sistema sistema;
-    Semaphore mutex = new Semaphore(1);
+
+    private int idComprador;
+    private String tipoComprador;
+    private String zona;
+    private int cantDeEntradas;
+    private Espectaculo espectaculo;
+    private Sistema sistema;
+    private Semaphore mutex = new Semaphore(1);
+
 
     public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, Espectaculo espectaculo, Sistema sistema) {
         this.idComprador = idComprador;
@@ -22,17 +24,27 @@ public class Comprador extends Thread {
         this.sistema = sistema;
     }
 
+    public int getIdComprador() {
+        return idComprador;
+    }
+
+
     public void run (){
+
         try {
-            System.out.println("Estoy esperando un vendedor");
+            System.out.println("El comprador número " + getIdComprador() + " está esperando vendedor.");
             Vendedor vendedor = sistema.asignarVendedor();
-            System.out.println("Estoy siendo atendido");
+
             mutex.acquire();
             vendedor.vender(zona, cantDeEntradas, espectaculo);
+            System.out.println("El comprador número " + getIdComprador() + " está siendo atendido.");
             mutex.release();
-            sistema.liberarVendedor(vendedor);
-        } catch (InterruptedException e){
 
+            sistema.liberarVendedor(vendedor);
+
+        }catch (InterruptedException e){
+            System.out.println("BOOOM!!");
+            e.printStackTrace();
         }
     }
 }
