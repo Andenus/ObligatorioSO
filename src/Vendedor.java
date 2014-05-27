@@ -21,8 +21,9 @@ public class Vendedor {
             }
         };
         List<Entrada> entradas = espectaculo.getEntradas();
-        Asiento[][] asientos = espectaculo.getAsientos().get(zona);
+        Asiento[][] asientos = espectaculo.getAsientos().get(zonaSelecionada);
         Entrada[] entradasVendidas = new Entrada[cantEntradas];
+
         for (int i=0; i < asientos.length; i++){
             List<Asiento> asientosLibres = new ArrayList<Asiento>(asientos[i].length);
             for (int j=0; j < asientos[i].length; j++){

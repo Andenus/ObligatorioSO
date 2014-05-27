@@ -38,42 +38,44 @@ public class Main {
         Espectaculo espectaculo;
         Comprador[] compradores;
         try {
-            JSONObject escenario = (JSONObject) ((JSONObject) parser.parse(new FileReader(System.getProperty("user.dir") + "\\Escenarios\\EscenariosPrueba.json"))).get("Escenario");
+            JSONObject escenario = (JSONObject) ((JSONObject) parser.parse(new FileReader(System.getProperty("user.dir") + "\\Escenarios\\EscenarioPrueba.json"))).get("Escenario");
             JSONObject espectaculoDatos = (JSONObject) escenario.get("Espectaculo");
-            zonas = new ArrayList<Zona>(((JSONObject)espectaculoDatos.get("zonas")).size());
-            for (int i = 1; i == ((JSONObject) espectaculoDatos.get("zonas")).size(); i++) {
+            zonas = new ArrayList<Zona>(((JSONObject)espectaculoDatos.get("zonas")).toString().split("},").length);
+            for (int i = 1; i < 3; i++) {
                 String nombreNuevaZona = (String)((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+i))).get("nombre");
-                int largoFilas = (Integer) (Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+i))).get("largoFila");
-                int cantidadFilas = (Integer) (Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+i))).get("cantFilas");
+                int largoFilas = ((Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+i))).get("largoFila")).intValue();
+                int cantidadFilas = ((Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+i))).get("cantFilas")).intValue();
                 Zona nuevaZona = new Zona(nombreNuevaZona,cantidadFilas,largoFilas);
                 zonas.add(nuevaZona);
             }
 
-            fecha = new Date[((JSONObject)espectaculoDatos.get("fecha")).size()];
             String[] fechasEvento = ((String)espectaculoDatos.get("fecha")).split(",");
+            fecha = new Date[fechasEvento.length];
             for (int i = 0; i < fecha.length; i++) {
                 fecha[i] = new Date(fechasEvento[i]);
             }
 
-            int cantidadEntradas = (Integer) (Number) espectaculoDatos.get("cantidadEntradas");
+            int cantidadEntradas = ((Number) espectaculoDatos.get("cantidadEntradas")).intValue();
             String localidad = (String) espectaculoDatos.get("localidad");
             String nombreEspectaculo = (String) espectaculoDatos.get("nombre");
             espectaculo = new Espectaculo(localidad, cantidadEntradas, nombreEspectaculo,fecha, zonas);
 
-            vendedores = new ArrayList<Vendedor>(((JSONObject) escenario.get("Sistema")).size());
-            for (int i = 1; i == ((JSONObject) escenario.get("Sistema")).size(); i++) {
-                vendedores.add(new Vendedor((Integer) (Number)((JSONObject) escenario.get("Sistema")).get("vendedor"+i)));
+            vendedores = new ArrayList<Vendedor>((escenario.get("Sistema")).toString().split(",").length);
+            System.out.println((escenario.get("Sistema")).toString().split(",").length);
+            for (int i = 1; i < 4; i++) {
+                Vendedor vendedorNuevo = new Vendedor(((Number)((JSONObject) escenario.get("Sistema")).get("vendedor"+i)).intValue());
+                vendedores.add(vendedorNuevo);
             }
 
             sistema = new Sistema(vendedores);
 
             compradores = new Comprador[((JSONObject) escenario.get("Compradores")).size()];
             for (int i = 0; i < compradores.length; i++) {
-                JSONObject comprador = (JSONObject) ((JSONObject) escenario.get("Compradores")).get("comprador"+i);
-                int idComprador = (Integer) (Number)  comprador.get("idComprador");
+                JSONObject comprador = (JSONObject) ((JSONObject) escenario.get("Compradores")).get("comprador"+(i+1));
+                int idComprador = ((Number)  comprador.get("idComprador")).intValue();
                 String tipoComprador = (String) comprador.get("tipoComprador");
                 String zona = (String) comprador.get("zona");
-                int cantDeEntradas = (Integer) (Number) comprador.get("cantDeEntradas");
+                int cantDeEntradas = ((Number) comprador.get("cantDeEntradas")).intValue();
                 compradores[i]= new Comprador(idComprador,tipoComprador,zona,cantDeEntradas, espectaculo, sistema);
             }
 
@@ -82,7 +84,7 @@ public class Main {
             }
 
         } catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 }
