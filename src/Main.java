@@ -88,8 +88,6 @@ public class Main {
                 comprador.start();
             }
 
-
-
         } catch (Exception e){
             e.printStackTrace();
         }

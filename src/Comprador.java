@@ -1,4 +1,5 @@
 import java.rmi.Naming;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -13,6 +14,7 @@ public class Comprador extends Thread {
     private Espectaculo espectaculo;
     private Sistema sistema;
     private Semaphore mutex = new Semaphore(1);
+    private List<Asiento> asientosAsignados;
 
 
     public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, Espectaculo espectaculo, Sistema sistema) {
@@ -28,6 +30,9 @@ public class Comprador extends Thread {
         return idComprador;
     }
 
+    public int getCantDeEntradas() {
+        return cantDeEntradas;
+    }
 
     public void run (){
 
@@ -39,6 +44,7 @@ public class Comprador extends Thread {
             vendedor.vender(zona, cantDeEntradas, espectaculo);
             System.out.println("El comprador número " + getIdComprador() + " está siendo atendido.");
             mutex.release();
+            System.out.println("El comprador número " + getIdComprador() + " se lleva " + getCantDeEntradas() + " entradas.");
 
             sistema.liberarVendedor(vendedor);
 

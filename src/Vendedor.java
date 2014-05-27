@@ -19,13 +19,13 @@ public class Vendedor {
             if (zonaARecorrer.getNombre().equals(zona)){
                 zonaSelecionada = zonaARecorrer;
             }
-        };
+        }
         List<Entrada> entradas = espectaculo.getEntradas();
         Asiento[][] asientos = espectaculo.getAsientos().get(zonaSelecionada);
         Entrada[] entradasVendidas = new Entrada[cantEntradas];
 
         for (int i=0; i < asientos.length; i++){
-            List<Asiento> asientosLibres = new ArrayList<Asiento>(asientos[i].length);
+            List<Asiento> asientosLibres = new ArrayList<Asiento>(asientos[i].length); //Array que inicializa el largo de la fila
             for (int j=0; j < asientos[i].length; j++){
                 if (asientos[i][j].isLibre()){
                     asientosLibres.add(asientos[i][j]);
