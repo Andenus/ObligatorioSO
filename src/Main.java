@@ -61,7 +61,6 @@ public class Main {
             espectaculo = new Espectaculo(localidad, cantidadEntradas, nombreEspectaculo,fecha, zonas);
 
             vendedores = new ArrayList<Vendedor>((escenario.get("Sistema")).toString().split(",").length);
-            System.out.println((escenario.get("Sistema")).toString().split(",").length);
             for (int i = 1; i < 4; i++) {
                 Vendedor vendedorNuevo = new Vendedor(((Number)((JSONObject) escenario.get("Sistema")).get("vendedor"+i)).intValue());
                 vendedores.add(vendedorNuevo);
