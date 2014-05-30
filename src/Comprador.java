@@ -40,10 +40,9 @@ public class Comprador extends Thread {
             System.out.println("El comprador número " + getIdComprador() + " está esperando vendedor.");
             Vendedor vendedor = sistema.asignarVendedor();
 
-            mutex.acquire();
-            vendedor.vender(zona, cantDeEntradas, espectaculo);
             System.out.println("El comprador número " + getIdComprador() + " está siendo atendido.");
-            mutex.release();
+            vendedor.vender(zona, cantDeEntradas, espectaculo);
+
             System.out.println("El comprador número " + getIdComprador() + " se lleva " + getCantDeEntradas() + " entradas.");
 
             sistema.liberarVendedor(vendedor);
