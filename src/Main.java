@@ -51,7 +51,7 @@ public class Main {
                 zonas = new ArrayList<Zona>(((JSONObject)espectaculoDatos.get("zonas")).toString().split("},").length);
 
 
-                for (int j = 1; i < 3; i++) {
+                for (int j = 1; j < 3; j++) {
                     String nombreNuevaZona = (String)((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+j))).get("nombre");
                     int largoFilas = ((Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+j))).get("largoFila")).intValue();
                     int cantidadFilas = ((Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+j))).get("cantFilas")).intValue();
@@ -61,7 +61,7 @@ public class Main {
 
                 String[] fechasEvento = ((String)espectaculoDatos.get("fecha")).split(",");
                 fecha = new Date[fechasEvento.length];
-                for (int h = 0; i < fecha.length; i++) {
+                for (int h = 0; h < fecha.length; h++) {
                     fecha[h] = new Date(fechasEvento[i]);
                 }
 

@@ -21,6 +21,7 @@ public class Vendedor {
                 espectaculoSeleccionado = espect;
             }
         }
+//        System.out.println(espectaculoSeleccionado.getNombre());
         try {
             espectaculoSeleccionado.mutex.acquire();
             List<Zona> zonasALaVenta = espectaculoSeleccionado.getZonas();
@@ -33,7 +34,6 @@ public class Vendedor {
             List<Entrada> entradas = espectaculoSeleccionado.getEntradas();
             Asiento[][] asientos = espectaculoSeleccionado.getAsientos().get(zonaSelecionada);
             Entrada[] entradasVendidas = new Entrada[cantEntradas];
-
             for (int i = 0; i < asientos.length; i++) {
                 List<Asiento> asientosLibres = new ArrayList<Asiento>(asientos[i].length); //Array que inicializa el largo de la fila
                 for (int j = 0; j < asientos[i].length; j++) {
