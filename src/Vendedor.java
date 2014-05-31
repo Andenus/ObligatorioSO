@@ -7,23 +7,31 @@ import java.util.List;
  */
 public class Vendedor {
     int idVendedor;
+    ArrayList<Espectaculo> espectaculos;
 
-    public Vendedor(int idVendedor) {
+    public Vendedor(int idVendedor, ArrayList<Espectaculo> espectaculos) {
         this.idVendedor = idVendedor;
+        this.espectaculos = espectaculos;
     }
 
-    public Entrada[] vender(String zona, int cantEntradas, Espectaculo espectaculo) {
+    public Entrada[] vender(String zona, int cantEntradas, String espectaculo) {
+        Espectaculo espectaculoSeleccionado = null;
+        for (Espectaculo espect : espectaculos){
+            if (espect.getNombre().equals(espectaculo)){
+                espectaculoSeleccionado = espect;
+            }
+        }
         try {
-            espectaculo.mutex.acquire();
-            List<Zona> zonasALaVenta = espectaculo.getZonas();
+            espectaculoSeleccionado.mutex.acquire();
+            List<Zona> zonasALaVenta = espectaculoSeleccionado.getZonas();
             Zona zonaSelecionada = null;
             for (Zona zonaARecorrer : zonasALaVenta) {
                 if (zonaARecorrer.getNombre().equals(zona)) {
                     zonaSelecionada = zonaARecorrer;
                 }
             }
-            List<Entrada> entradas = espectaculo.getEntradas();
-            Asiento[][] asientos = espectaculo.getAsientos().get(zonaSelecionada);
+            List<Entrada> entradas = espectaculoSeleccionado.getEntradas();
+            Asiento[][] asientos = espectaculoSeleccionado.getAsientos().get(zonaSelecionada);
             Entrada[] entradasVendidas = new Entrada[cantEntradas];
 
             for (int i = 0; i < asientos.length; i++) {
@@ -52,9 +60,9 @@ public class Vendedor {
                     }
                 }
             }
-            espectaculo.setEntradas(entradas);
-            espectaculo.getAsientos().replace(zonaSelecionada, asientos);
-            espectaculo.mutex.release();
+            espectaculoSeleccionado.setEntradas(entradas);
+            espectaculoSeleccionado.getAsientos().replace(zonaSelecionada, asientos);
+            espectaculoSeleccionado.mutex.release();
             return entradasVendidas;
         } catch (InterruptedException e) {
             e.printStackTrace();

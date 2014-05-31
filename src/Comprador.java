@@ -11,13 +11,13 @@ public class Comprador extends Thread {
     private String tipoComprador;
     private String zona;
     private int cantDeEntradas;
-    private Espectaculo espectaculo;
+    private String espectaculo;
     private Sistema sistema;
     private Semaphore mutex = new Semaphore(1);
     private List<Asiento> asientosAsignados;
 
 
-    public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, Espectaculo espectaculo, Sistema sistema) {
+    public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, String espectaculo, Sistema sistema) {
         this.idComprador = idComprador;
         this.tipoComprador = tipoComprador;
         this.zona = zona;
