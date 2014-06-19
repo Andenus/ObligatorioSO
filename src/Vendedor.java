@@ -52,7 +52,7 @@ public class Vendedor {
                     }
                 }
             }
-           // espectaculoSeleccionado.getEntradas().replace(zonaSelecionada, asientos); DA ERROR AGU...
+            //espectaculoSeleccionado.getEntradas().replace(zonaSelecionada, asientos); //DA ERROR AGU...
             // Se libera la zona seleccionada llamando al semaforo de esta
             zonaSelecionada.mutex.release();
             return entradasVendidas;

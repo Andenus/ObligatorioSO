@@ -92,6 +92,7 @@ public class Main {
                 int cantDeEntradas = Integer.parseInt( jComprador.get("cantDeEntradas").toString());
                 String espectaculoSeleccionado = (String) jComprador.get("espectaculo");
                 String nombreLocal = (String) jComprador.get("lugarDeCompra");
+                int tiempoLlegada = Integer.parseInt(jComprador.get("tiempoIngreso").toString());
                 //Dado el nombre del local, encuentro en la lista de locales el que le corresponde al comprador
                 Local local = new Local();
                 for(Local l: locales)
@@ -101,7 +102,7 @@ public class Main {
                         local=l;
                     }
                 }
-                compradores.add( new Comprador(idComprador,tipoComprador,zona,cantDeEntradas, espectaculoSeleccionado, local));
+                compradores.add( new Comprador(idComprador,tipoComprador,zona,cantDeEntradas, espectaculoSeleccionado, local,tiempoLlegada));
             }
 
             for (Comprador comprador:compradores){

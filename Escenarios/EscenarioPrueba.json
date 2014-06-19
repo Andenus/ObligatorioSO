@@ -47,6 +47,7 @@
          "Compradores" :
             [
                   {
+                  "tiempoIngreso":1,
                      "lugarDeCompra" : "abitab",
                      "llegada" : 1,
                      "idComprador" : 1,
@@ -56,6 +57,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":4,
                   "lugarDeCompra" : "abitab",
                      "idComprador" : 2,
                      "tipoComprador" : "",
@@ -64,6 +66,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "abitab",
                      "idComprador" : 3,
                      "tipoComprador" : "",
@@ -72,6 +75,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "abitab",
                      "idComprador" : 4,
                      "tipoComprador" : "",
@@ -80,6 +84,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "abitab",
                      "idComprador" : 5,
                      "tipoComprador" : "",
@@ -88,6 +93,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "abitab",
                      "idComprador" : 6,
                      "tipoComprador" : "",
@@ -96,6 +102,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "abitab",
                      "idComprador" : 7,
                      "tipoComprador" : "",
@@ -104,6 +111,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "abitab",
                      "idComprador" : 8,
                      "tipoComprador" : "",
@@ -112,6 +120,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 9,
                      "tipoComprador" : "",
@@ -120,6 +129,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 10,
                      "tipoComprador" : "",
@@ -128,6 +138,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 11,
                      "tipoComprador" : "",
@@ -136,6 +147,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 12,
                      "tipoComprador" : "",
@@ -144,6 +156,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 13,
                      "tipoComprador" : "",
@@ -152,6 +165,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 14,
                      "tipoComprador" : "",
@@ -160,6 +174,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 15,
                      "tipoComprador" : "",
@@ -168,7 +183,8 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
-                  "lugarDeCompra" : "redPagos",
+                  "tiempoIngreso":3,
+                  "lugarDeCompra" :"redPagos",
                      "idComprador" : 16,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
@@ -176,6 +192,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 17,
                      "tipoComprador" : "",
@@ -184,6 +201,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 18,
                      "tipoComprador" : "",
@@ -192,6 +210,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "abitab",
                      "idComprador" : 19,
                      "tipoComprador" : "",
@@ -200,6 +219,7 @@
                      "espectaculo" : "Audioslave"
                   },
                   {
+                  "tiempoIngreso":3,
                   "lugarDeCompra" : "redPagos",
                      "idComprador" : 20,
                      "tipoComprador" : "",
