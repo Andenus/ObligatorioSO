@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,7 +22,6 @@ public class Vendedor {
         }
 //        System.out.println(espectaculoSeleccionado.getNombre());
         try {
-            espectaculoSeleccionado.mutex.acquire();
             List<Zona> zonasALaVenta = espectaculoSeleccionado.getZonas();
             Zona zonaSelecionada = null;
             for (Zona zonaARecorrer : zonasALaVenta) {
@@ -31,38 +29,32 @@ public class Vendedor {
                     zonaSelecionada = zonaARecorrer;
                 }
             }
-            List<Entrada> entradas = espectaculoSeleccionado.getEntradas();
-            Asiento[][] asientos = espectaculoSeleccionado.getAsientos().get(zonaSelecionada);
+            // Se bloquea la zona seleccionada llamando al semaforo de esta
+            zonaSelecionada.mutex.acquire();
+            Entrada[][] asientos = espectaculoSeleccionado.getEntradas().get(zonaSelecionada);
             Entrada[] entradasVendidas = new Entrada[cantEntradas];
             for (int i = 0; i < asientos.length; i++) {
-                List<Asiento> asientosLibres = new ArrayList<Asiento>(asientos[i].length); //Array que inicializa el largo de la fila
+                List<Entrada> asientosLibres = new ArrayList<Entrada>(asientos[i].length); //Array que inicializa el largo de la fila
                 for (int j = 0; j < asientos[i].length; j++) {
                     if (asientos[i][j].isLibre()) {
                         asientosLibres.add(asientos[i][j]);
                     } else {
                         if (asientosLibres.size() >= cantEntradas) {
                             int h = 0;
-                            for (Asiento asiento : asientosLibres) {
+                            for (Entrada asiento : asientosLibres) {
                                 //Se ocupa el asiento
                                 asiento.setLibre(false);
                                 //Se setea el numero de asiento, la zona y el precio de la entrada
-                                Entrada entradaAAsignar = entradas.get(0);
-                                entradaAAsignar.setNumAsiento(asiento.getNumero());
-                                entradaAAsignar.setZona(zonaSelecionada.getNombre());
-                                entradaAAsignar.setPrecio(zonaSelecionada.getPrecioEntrada());
-                                //Se vende la entrada
-                                entradasVendidas[h] = entradas.get(0);
-                                h++;
-                                //Se saca la entrada de la lista de entradas no vendidas
-                                entradas.remove(0);
+                                asiento.setZona(zonaSelecionada.getNombre());
+                                asiento.setPrecio(zonaSelecionada.getPrecioEntrada());
                             }
                         }
                     }
                 }
             }
-            espectaculoSeleccionado.setEntradas(entradas);
-            espectaculoSeleccionado.getAsientos().replace(zonaSelecionada, asientos);
-            espectaculoSeleccionado.mutex.release();
+            espectaculoSeleccionado.getEntradas().replace(zonaSelecionada, asientos);
+            // Se libera la zona seleccionada llamando al semaforo de esta
+            zonaSelecionada.mutex.release();
             return entradasVendidas;
         } catch (InterruptedException e) {
             e.printStackTrace();

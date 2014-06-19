@@ -1,3 +1,5 @@
+import java.util.concurrent.Semaphore;
+
 /**
  * Created by user on 24/05/2014.
  */
@@ -6,6 +8,7 @@ public class Zona {
     private int largoFila;
     private int cantFilas;
     private int precioEntrada;
+    Semaphore mutex = new Semaphore (1);
 
     public int getPrecioEntrada() {
         return precioEntrada;

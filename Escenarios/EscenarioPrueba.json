@@ -23,16 +23,22 @@
                         }
                   }
             },
-         "Sistema" :
+         "Locales" :
             {
-               "vendedor1" : 1,
-               "vendedor2" : 2,
-               "vendedor3" : 3
+               "local1" :
+               {
+                  "nombre" : "abitab",
+                  "vendedor1" : 1,
+                  "vendedor2" : 2,
+                  "vendedor3" : 3
+               }
             },
          "Compradores" :
             {
                "comprador1" :
                   {
+                     "local" : "abitab",
+                     "llegada" : 1,
                      "idComprador" : 1,
                      "tipoComprador" : "",
                      "zona" : "zonaA",

@@ -1,4 +1,3 @@
-import java.rmi.Naming;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
@@ -12,18 +11,18 @@ public class Comprador extends Thread {
     private String zona;
     private int cantDeEntradas;
     private String espectaculo;
-    private Sistema sistema;
+    private Local local;
     private Semaphore mutex = new Semaphore(1);
-    private List<Asiento> asientosAsignados;
+    private List<Entrada> asientosAsignados;
 
 
-    public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, String espectaculo, Sistema sistema) {
+    public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, String espectaculo, Local local) {
         this.idComprador = idComprador;
         this.tipoComprador = tipoComprador;
         this.zona = zona;
         this.cantDeEntradas = cantDeEntradas;
         this.espectaculo = espectaculo;
-        this.sistema = sistema;
+        this.local = local;
     }
 
     public int getIdComprador() {
@@ -38,14 +37,14 @@ public class Comprador extends Thread {
 
         try {
             System.out.println("El comprador número " + getIdComprador() + " está esperando vendedor.");
-            Vendedor vendedor = sistema.asignarVendedor();
+            Vendedor vendedor = local.asignarVendedor();
 
             System.out.println("El comprador número " + getIdComprador() + " está siendo atendido.");
             vendedor.vender(zona, cantDeEntradas, espectaculo);
 
-            System.out.println("El comprador número " + getIdComprador() + " se lleva " + getCantDeEntradas() + " entradas.");
+            System.out.println("El comprador número " + getIdComprador() + " se lleva " + getCantDeEntradas() + " entradas de la" + zona + ".");
 
-            sistema.liberarVendedor(vendedor);
+            local.liberarVendedor(vendedor);
 
         }catch (InterruptedException e){
             System.out.println("BOOOM!!");

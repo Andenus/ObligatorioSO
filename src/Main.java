@@ -2,7 +2,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,28 +12,12 @@ import java.util.List;
 public class Main {
 
     public static void main (String[] args){
-        /*List<Zona> zonas = new ArrayList<Zona>(6);
-        zonas.add(new Zona("uno", 3, 4));
-        zonas.add(new Zona("uno", 3, 4));
-        zonas.add(new Zona("uno", 3, 4));
-        zonas.add(new Zona("uno", 3, 4));
-        zonas.add(new Zona("uno", 3, 4));
-        zonas.add(new Zona("uno", 3, 4));
-        Date[] fecha = new Date[2];
-        List<Vendedor> vend = new ArrayList<Vendedor>(1);
-        vend.add(new Vendedor());
-        Sistema sist = new Sistema(vend);
-        Espectaculo espec = new Espectaculo("", 500, "", fecha, zonas);
-        Comprador[] comprador = {new Comprador(espec,sist),new Comprador(espec,sist),new Comprador(espec,sist),new Comprador(espec,sist),new Comprador(espec,sist), new Comprador(espec,sist),new Comprador(espec,sist),new Comprador(espec,sist),new Comprador(espec,sist),new Comprador(espec,sist),new Comprador(espec,sist),new Comprador(espec,sist)};
 
-        for (Comprador compra:comprador){
-            compra.start();
-        }*/
         List<Zona> zonas;
         Date[] fecha;
         JSONParser parser = new JSONParser();
         List<Vendedor> vendedores;
-        Sistema sistema;
+        Local local;
         Espectaculo espectaculo;
         Comprador[] compradores;
 
@@ -46,12 +29,11 @@ public class Main {
 
 
             ArrayList<Espectaculo> espectaculos = new ArrayList<Espectaculo>();
-            for (int i = 0; i < 1; i++) {
+            for (int i = 0; i < escenario.toString().split("Espectaculo").length-1; i++) {
                 JSONObject espectaculoDatos = (JSONObject) escenario.get("Espectaculo"+(i+1));
                 zonas = new ArrayList<Zona>(((JSONObject)espectaculoDatos.get("zonas")).toString().split("},").length);
 
-
-                for (int j = 1; j < 3; j++) {
+                for (int j = 1; j <= (((JSONObject)espectaculoDatos.get("zonas")).toString().split("zona").length-1)/2; j++) {
                     String nombreNuevaZona = (String)((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+j))).get("nombre");
                     int largoFilas = ((Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+j))).get("largoFila")).intValue();
                     int cantidadFilas = ((Number) ((JSONObject)(((JSONObject) espectaculoDatos.get("zonas")).get("zona"+j))).get("cantFilas")).intValue();
@@ -72,14 +54,14 @@ public class Main {
                 espectaculos.add(espectaculo);
             }
 
-
-            vendedores = new ArrayList<Vendedor>((escenario.get("Sistema").toString()).split(",").length);
-            for (int i = 1; i < 4; i++) {
-                Vendedor vendedorNuevo = new Vendedor(((Number)((JSONObject) escenario.get("Sistema")).get("vendedor"+i)).intValue(), espectaculos);
+            //TODO: agregar for para inicializar todos los locales
+            vendedores = new ArrayList<Vendedor>((escenario.get("Local").toString()).split(",").length);
+            for (int i = 1; i < (escenario.get("Local").toString()).split(",").length; i++) {
+                Vendedor vendedorNuevo = new Vendedor(((Number)((JSONObject) escenario.get("Local")).get("vendedor"+i)).intValue(), espectaculos);
                 vendedores.add(vendedorNuevo);
             }
 
-            sistema = new Sistema(vendedores);
+            local = new Local(vendedores);
 
             compradores = new Comprador[((JSONObject) escenario.get("Compradores")).size()];
             for (int i = 0; i < compradores.length; i++) {
@@ -89,7 +71,7 @@ public class Main {
                 String zona = (String) comprador.get("zona");
                 int cantDeEntradas = ((Number) comprador.get("cantDeEntradas")).intValue();
                 String espectaculoSeleccionado = (String) comprador.get("espectaculo");
-                compradores[i]= new Comprador(idComprador,tipoComprador,zona,cantDeEntradas, espectaculoSeleccionado, sistema);
+                compradores[i]= new Comprador(idComprador,tipoComprador,zona,cantDeEntradas, espectaculoSeleccionado, local);
             }
 
             for (Comprador comprador:compradores){

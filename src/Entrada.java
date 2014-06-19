@@ -4,8 +4,16 @@
 public class Entrada {
     private int numAsiento;
     private String zona;
-    private int idEntrada;
     private int precio;
+    private boolean libre = true;
+
+    public boolean isLibre() {
+        return libre;
+    }
+
+    public void setLibre(boolean libre) {
+        this.libre = libre;
+    }
 
     public String getZona() {
         return zona;
@@ -15,8 +23,8 @@ public class Entrada {
         this.zona = zona;
     }
 
-    public Entrada(int idEntrada) {
-        this.idEntrada = idEntrada;
+    public Entrada(int numAsiento) {
+        this.numAsiento = numAsiento;
     }
 
     public void setPrecio(int precio) {
@@ -33,9 +41,5 @@ public class Entrada {
 
     public int getPrecio() {
         return precio;
-    }
-
-    public int getIdEntrada() {
-        return idEntrada;
     }
 }
