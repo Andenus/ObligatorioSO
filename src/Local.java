@@ -18,6 +18,9 @@ public class Local {
         this.nombre = nombre;
     }
 
+    public Local() {
+    }
+
     public Vendedor asignarVendedor() throws InterruptedException{
         vendedoresLibres.acquire();
         Vendedor vendedor = vendedores.get(0);

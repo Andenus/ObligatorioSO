@@ -36,13 +36,13 @@ public class Comprador extends Thread {
     public void run (){
 
         try {
-            System.out.println("El comprador número " + getIdComprador() + " está esperando vendedor.");
+            System.out.println("Comprador:" +idComprador+", Esperando vendedor, Local:"+local.nombre+", Zona:"+zona);
             Vendedor vendedor = local.asignarVendedor();
 
-            System.out.println("El comprador número " + getIdComprador() + " está siendo atendido.");
+            System.out.println("Comprador:" +idComprador+", Siendo atendido, Local:"+local.nombre+", Zona:"+zona);
             vendedor.vender(zona, cantDeEntradas, espectaculo);
 
-            System.out.println("El comprador número " + getIdComprador() + " se lleva " + getCantDeEntradas() + " entradas de la" + zona + ".");
+            System.out.println("Comprador:" +idComprador+", Compra entradas("+cantDeEntradas+"), Local:"+local.nombre+", Zona:"+zona);
 
             local.liberarVendedor(vendedor);
 

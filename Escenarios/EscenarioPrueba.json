@@ -1,43 +1,53 @@
 {
    "Escenario" :
       {
-         "Espectaculo1" :
-            {
-               "localidad" : "Estadio Centenario",
+
+           "Espectaculos":[
+                        {
+               "lugar" : "Estadio Centenario",
                "cantidadEntradas" : 200,
                "nombre" : "Audioslave",
-               "fecha" : "2014/05/30, 2014/05/31",
-               "zonas" :
-                  {
-                     "zona1" :
-                        {
-                           "nombre" : "zonaA",
-                           "cantFilas" : 10,
-                           "largoFila" : 10
-                        },
-                     "zona2" :
-                        {
-                           "nombre" : "zonaB",
-                           "cantFilas" : 10,
-                           "largoFila" : 10
-                        }
-                  }
-            },
-         "Locales" :
-            {
-               "local1" :
+               "fecha" : "2014/05/30,2014/05/31",
+                    "Zonas" :
+                        [
+                              {
+                                "nombre" : "zonaA",
+                                "cantFilas" : 10,
+                                "largoFila" : 10
+                                },
+                                {
+                                "nombre" : "zonaB",
+                                "cantFilas" : 10,
+                                "largoFila" : 10
+                                }
+                         ]
+                       }
+                      ],
+
+            "Locales":[
                {
                   "nombre" : "abitab",
-                  "vendedor1" : 1,
-                  "vendedor2" : 2,
-                  "vendedor3" : 3
+                  "Vendedores" :
+                      [
+                      {"id" : 1},
+                      {"id" : 2},
+                      {"id" : 3}
+                      ]
+               },
+               {
+                  "nombre" : "redPagos",
+                  "Vendedores" :
+                   [
+                       {"id" : 1},
+                       {"id" : 2},
+                   ]
                }
-            },
+
+               ],
          "Compradores" :
-            {
-               "comprador1" :
+            [
                   {
-                     "local" : "abitab",
+                     "lugarDeCompra" : "abitab",
                      "llegada" : 1,
                      "idComprador" : 1,
                      "tipoComprador" : "",
@@ -45,158 +55,158 @@
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador2" :
                   {
+                  "lugarDeCompra" : "abitab",
                      "idComprador" : 2,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 10,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador3" :
                   {
+                  "lugarDeCompra" : "abitab",
                      "idComprador" : 3,
                      "tipoComprador" : "",
                      "zona" : "zonaB",
                      "cantDeEntradas" : 5,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador4" :
                   {
+                  "lugarDeCompra" : "abitab",
                      "idComprador" : 4,
                      "tipoComprador" : "",
                      "zona" : "zonaB",
                      "cantDeEntradas" : 8,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador5" :
                   {
+                  "lugarDeCompra" : "abitab",
                      "idComprador" : 5,
                      "tipoComprador" : "",
                      "zona" : "zonaB",
                      "cantDeEntradas" : 10,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador6" :
                   {
+                  "lugarDeCompra" : "abitab",
                      "idComprador" : 6,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador7" :
                   {
+                  "lugarDeCompra" : "abitab",
                      "idComprador" : 7,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador8" :
                   {
+                  "lugarDeCompra" : "abitab",
                      "idComprador" : 8,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador9" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 9,
                      "tipoComprador" : "",
                      "zona" : "zonaB",
                      "cantDeEntradas" : 2,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador10" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 10,
                      "tipoComprador" : "",
                      "zona" : "zonaB",
                      "cantDeEntradas" : 6,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador11" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 11,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador12" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 12,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador13" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 13,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador14" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 14,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador15" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 15,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador16" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 16,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 9,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador17" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 17,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 4,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador18" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 18,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 4,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador19" :
                   {
+                  "lugarDeCompra" : "abitab",
                      "idComprador" : 19,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 5,
                      "espectaculo" : "Audioslave"
                   },
-               "comprador20" :
                   {
+                  "lugarDeCompra" : "redPagos",
                      "idComprador" : 20,
                      "tipoComprador" : "",
                      "zona" : "zonaA",
                      "cantDeEntradas" : 5,
                      "espectaculo" : "Audioslave"
                   }
-            }
+            ],
       }
 }

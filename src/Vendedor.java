@@ -6,9 +6,9 @@ import java.util.List;
  */
 public class Vendedor {
     int idVendedor;
-    ArrayList<Espectaculo> espectaculos;
+    List<Espectaculo> espectaculos;
 
-    public Vendedor(int idVendedor, ArrayList<Espectaculo> espectaculos) {
+    public Vendedor(int idVendedor, List<Espectaculo> espectaculos) {
         this.idVendedor = idVendedor;
         this.espectaculos = espectaculos;
     }
@@ -52,7 +52,7 @@ public class Vendedor {
                     }
                 }
             }
-            espectaculoSeleccionado.getEntradas().replace(zonaSelecionada, asientos);
+           // espectaculoSeleccionado.getEntradas().replace(zonaSelecionada, asientos); DA ERROR AGU...
             // Se libera la zona seleccionada llamando al semaforo de esta
             zonaSelecionada.mutex.release();
             return entradasVendidas;
