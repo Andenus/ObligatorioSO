@@ -9,6 +9,7 @@ public class Local {
 
     List<Vendedor> vendedores;
     List<Vendedor> vendedoresOcupados = new ArrayList<Vendedor>();
+    private List<Comprador> compradores = new ArrayList<Comprador>();
     String nombre;
     Semaphore vendedoresLibres; //inicializado en el JSON
 
@@ -16,9 +17,6 @@ public class Local {
         this.vendedores = vendedores;
         vendedoresLibres = new Semaphore(vendedores.size());
         this.nombre = nombre;
-    }
-
-    public Local() {
     }
 
     public Vendedor asignarVendedor() throws InterruptedException{
@@ -35,4 +33,11 @@ public class Local {
         vendedoresLibres.release();
     }
 
+    public List<Comprador> getCompradores() {
+        return compradores;
+    }
+
+    public void setCompradores(List<Comprador> compradores) {
+        this.compradores = compradores;
+    }
 }

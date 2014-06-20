@@ -4,6 +4,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by user on 24/05/2014.
@@ -56,7 +57,7 @@ public class Main {
             //Selecciono todos los locales para el Escenario
             JSONArray jLocales =(JSONArray) escenario.get("Locales");
 
-            List<Local> locales = new ArrayList<Local>();
+            List<Local> locales = new CopyOnWriteArrayList<Local>();
             for (int i = 0; i<jLocales.size();i++){
 
                 JSONObject jLocal = (JSONObject)jLocales.get(i);
@@ -82,7 +83,7 @@ public class Main {
 
             JSONArray jCompradores = (JSONArray) escenario.get("Compradores");
 
-            List<Comprador> compradores = new ArrayList<Comprador>();
+            List<Comprador> compradores = new CopyOnWriteArrayList<Comprador>();
             for (int i = 0; i < jCompradores.size(); i++) {
                 JSONObject jComprador = (JSONObject) jCompradores.get(i);
 
@@ -92,22 +93,21 @@ public class Main {
                 int cantDeEntradas = Integer.parseInt( jComprador.get("cantDeEntradas").toString());
                 String espectaculoSeleccionado = (String) jComprador.get("espectaculo");
                 String nombreLocal = (String) jComprador.get("lugarDeCompra");
-                int tiempoLlegada = Integer.parseInt(jComprador.get("tiempoIngreso").toString());
-                //Dado el nombre del local, encuentro en la lista de locales el que le corresponde al comprador
-                Local local = new Local();
-                for(Local l: locales)
-                {
-                    if (l.nombre.equals(nombreLocal))
-                    {
-                        local=l;
-                    }
-                }
-                compradores.add( new Comprador(idComprador,tipoComprador,zona,cantDeEntradas, espectaculoSeleccionado, local,tiempoLlegada));
+                Double tiempoLlegada = Double.parseDouble(jComprador.get("tiempoIngreso").toString());
+//                //Dado el nombre del local, encuentro en la lista de locales el que le corresponde al comprador
+//                Local local = new Local();
+//                for(Local l: locales)
+//                {
+//                    if (l.nombre.equals(nombreLocal))
+//                    {
+//                        local=l;
+//                    }
+//                }
+                compradores.add( new Comprador(idComprador,tipoComprador,zona,cantDeEntradas, espectaculoSeleccionado, nombreLocal,tiempoLlegada));
             }
 
-            for (Comprador comprador:compradores){
-                comprador.start();
-            }
+            Reloj reloj = new Reloj(compradores,locales);
+            reloj.corre();
 
         } catch (Exception e){
             e.printStackTrace();
