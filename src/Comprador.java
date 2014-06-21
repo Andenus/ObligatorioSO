@@ -18,16 +18,18 @@ public class Comprador extends Thread {
     private Vendedor vendedor;
     private Double tiempoEnVentanilla;
 
-
     public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, String espectaculo, String local, Double tiempoIngreso) {
-        this.idComprador = idComprador;
-        this.tipoComprador = tipoComprador;
-        this.zona = zona;
-        this.cantDeEntradas = cantDeEntradas;
-        this.espectaculo = espectaculo;
+        this.setIdComprador(idComprador);
+        this.setTipoComprador(tipoComprador);
+        this.setZona(zona);
+        this.setCantDeEntradas(cantDeEntradas);
+        this.setEspectaculo(espectaculo);
         this.setLocal(local);
         this.setTiempoIngreso(tiempoIngreso);
         this.setTiempoEnVentanilla(2+(0.08*cantDeEntradas));
+        if (this.getCantDeEntradas()>=50 && !this.getTipoComprador().equals("P")){
+            this.setTipoComprador("GC");
+        }
     }
 
     public int getIdComprador() {
@@ -38,34 +40,20 @@ public class Comprador extends Thread {
         return cantDeEntradas;
     }
 
-    public void run (){
-
-//        System.out.println("Comprador:" +idComprador+", aún no ha llegado");
+    public void run () {
 
         comprar();
-        //VERR SI FUNCIONA DE ACA PODRIAMOS SACAR LOS HILOS QUE SE TIENENE QUE PLANIFICAR Y CORTAR EL RESTO...
-        //Esto para este caso solo deberia correr el hilo del comprador 2, y solo una vez...
-        //Corre solo el hilo 2 como debe ser, pero corre muchas veces el mismo...
-//        while (true)
-//            {
-//                if (this.getTiempoIngreso() <3)
-//                {
-//                    System.out.println("Entra"+idComprador);
-//                    comprar();
-//                }
-//            }
+
     }
 
-    public void  comprar()
-    {
-        System.out.println("Comprador:" +idComprador+", Esperando vendedor, Local:"+ getLocal()+", Zona:"+zona);
+    public void  comprar() {
 
-        System.out.println("Comprador:" +idComprador+", Siendo atendido, Local:"+ getLocal()+", Zona:"+zona);
-        getVendedor().vender(zona, cantDeEntradas, espectaculo);
+        System.out.println("Comprador:" + getIdComprador() +", Esperando vendedor, Local:"+ getLocal()+", Zona:"+ getZona());
 
-        System.out.println("Comprador:" +idComprador+", Compra entradas("+cantDeEntradas+"), Local:"+ getLocal()+", Zona:"+zona);
+        System.out.println("Comprador:" + getIdComprador() +", Siendo atendido, Local:"+ getLocal()+", Zona:"+ getZona());
+        asientosAsignados = getVendedor().vender(getZona(), getCantDeEntradas(), getEspectaculo());
 
-//        getLocal().liberarVendedor(getVendedor());
+        System.out.println("Comprador:" + getIdComprador() +", Compra entradas("+ getCantDeEntradas() +"), Local:"+ getLocal()+", Zona:"+ getZona());
     }
 
     public String getLocal() {
@@ -98,5 +86,45 @@ public class Comprador extends Thread {
 
     public void setTiempoIngreso(Double tiempoIngreso) {
         this.tiempoIngreso = tiempoIngreso;
+    }
+
+    public void setIdComprador(int idComprador) {
+        this.idComprador = idComprador;
+    }
+
+    public String getTipoComprador() {
+        return tipoComprador;
+    }
+
+    public void setTipoComprador(String tipoComprador) {
+        this.tipoComprador = tipoComprador;
+    }
+
+    public String getZona() {
+        return zona;
+    }
+
+    public void setZona(String zona) {
+        this.zona = zona;
+    }
+
+    public void setCantDeEntradas(int cantDeEntradas) {
+        this.cantDeEntradas = cantDeEntradas;
+    }
+
+    public String getEspectaculo() {
+        return espectaculo;
+    }
+
+    public void setEspectaculo(String espectaculo) {
+        this.espectaculo = espectaculo;
+    }
+
+    public List<Entrada> getAsientosAsignados() {
+        return asientosAsignados;
+    }
+
+    public void setAsientosAsignados(List<Entrada> asientosAsignados) {
+        this.asientosAsignados = asientosAsignados;
     }
 }

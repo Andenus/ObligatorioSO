@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -9,7 +10,8 @@ public class Local {
 
     List<Vendedor> vendedores;
     List<Vendedor> vendedoresOcupados = new ArrayList<Vendedor>();
-    private List<Comprador> compradores = new ArrayList<Comprador>();
+    private List<Comprador> compradores = new CopyOnWriteArrayList<Comprador>();
+    private List<Comprador> compradoresSiendoAtendidos = new CopyOnWriteArrayList<Comprador>();
     String nombre;
     Semaphore vendedoresLibres; //inicializado en el JSON
 
@@ -39,5 +41,13 @@ public class Local {
 
     public void setCompradores(List<Comprador> compradores) {
         this.compradores = compradores;
+    }
+
+    public List<Comprador> getCompradoresSiendoAtendidos() {
+        return compradoresSiendoAtendidos;
+    }
+
+    public void setCompradoresSiendoAtendidos(List<Comprador> compradoresSiendoAtendidos) {
+        this.compradoresSiendoAtendidos = compradoresSiendoAtendidos;
     }
 }

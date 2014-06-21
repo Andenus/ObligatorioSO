@@ -21,7 +21,7 @@ public class Main {
          * Se leen los datos del archivo JSON. El archivo contiene lo necesario para la simulación.
          */
         try {
-            JSONObject escenario = (JSONObject) ((JSONObject) parser.parse(new FileReader(System.getProperty("user.dir") + "\\Escenarios\\EscenarioPrueba.json"))).get("Escenario");
+            JSONObject escenario = (JSONObject) ((JSONObject) parser.parse(new FileReader(System.getProperty("user.dir") + "\\Escenarios\\EscenarioPrueba3.json"))).get("Escenario");
 
             //Obtengo todos los espectaculos para el escenario
             JSONArray jEspectaculos =(JSONArray) escenario.get("Espectaculos");
