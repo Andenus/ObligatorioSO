@@ -14,7 +14,7 @@ public class Reloj{
     Double tiempoTrascurrido = 0.0;
     List<Comprador> compradores;
     List<Local> locales;
-    Map<Vendedor, Double> vendedoresALiberar = new ConcurrentHashMap<Vendedor, Double>();
+    Map<Comprador, Double> vendedoresALiberar = new ConcurrentHashMap<Comprador, Double>();
     HashMap<Double, ArrayList<ArrayList<String>>> salida = new HashMap<Double, ArrayList<ArrayList<String>>>();
     boolean pasaronTodos = false;
     ManejadorArchivos archivoSalida = new ManejadorArchivos();
@@ -39,7 +39,7 @@ public class Reloj{
                 if (tipo.equals("GC")) {
                     prioridad2.add(comp);
                 }
-                if (tiempoTrascurrido - comp.getTiempoIngreso() >= 20.0) {
+                if (tiempoTrascurrido - comp.getTiempoIngreso() >= 5.0) {
                     comp.setTipoComprador("E");
                     prioridad1.add(comp);
                 }
@@ -70,7 +70,7 @@ public class Reloj{
                     if (comprador.getTiempoIngreso().compareTo(tiempoTrascurrido) == 0) {
                         System.out.println("Soy el comprador "+comprador.getIdComprador()+", mi tiempo de entrada es "+comprador.getTiempoIngreso()+" y el tempo transcurrido es "+tiempoTrascurrido);
                         for (Local local : locales) {
-                            if (local.nombre.equals(comprador.getLocal())) {
+                            if (local.nombre.equals(comprador.getNombreLocal())) {
                                 local.getCompradores().add(comprador);
                             }
                         }
@@ -84,12 +84,9 @@ public class Reloj{
                         for (Vendedor vendedorLibre : local.vendedores) {
                             if (!local.getCompradores().isEmpty()) {
                                 for (Comprador comprador : local.getCompradores()) {
-                                    comprador.setVendedor(vendedorLibre);
+                                    comprador.setLocal(local);
                                     comprador.start();
-                                    local.getCompradores().remove(comprador);
-                                    local.getCompradoresSiendoAtendidos().add(comprador);
                                     temp.add("Comprador" + comprador.getIdComprador() + " ingreso con prioridad " + comprador.getTipoComprador() + " en el momento " + tiempoTrascurrido);
-                                    temp.add("Comprador" + comprador.getIdComprador() + " está esperando ser atendido en " + local.nombre);
                                     temp.add("Comprador" + comprador.getIdComprador() + " se le vendió " + comprador.getCantDeEntradas() + " entradas para el espectaculo " + comprador.getEspectaculo() + " en la zona " + comprador.getZona());
                                     cont++;
                                     temp.add(Integer.toString(cont));
@@ -101,22 +98,22 @@ public class Reloj{
                                     }
                                     arraySalida.add(temp);
                                     salida.put(Math.ceil(comprador.getTiempoEnVentanilla() + comprador.getTiempoIngreso()), arraySalida);
-                                    vendedoresALiberar.put(comprador.getVendedor(), comprador.getTiempoEnVentanilla() + comprador.getTiempoIngreso());
+//                                    vendedoresALiberar.put(comprador, comprador.getTiempoEnVentanilla() + comprador.getTiempoIngreso());
                                 }
                             }
                         }
                     }
-                    for (Vendedor vendedor : local.vendedoresOcupados) {
-                        if (vendedoresALiberar.get(vendedor) != null) {
-                            if (vendedoresALiberar.get(vendedor) <= tiempoTrascurrido) {
-                                try {
-                                    local.liberarVendedor(vendedor);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                    }
+//                    for (Vendedor vendedor : local.vendedoresOcupados) {
+//                        if (vendedoresALiberar.get(vendedor) != null) {
+//                            if (vendedoresALiberar.get(vendedor) <= tiempoTrascurrido) {
+//                                try {
+//                                    local.liberarVendedor(vendedor);
+//                                } catch (InterruptedException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        }
+//                    }
                 }
                 if (salida.containsKey(tiempoTrascurrido)) {
                     archivoSalida.escribirArchivo(salida.get(tiempoTrascurrido));
@@ -129,6 +126,7 @@ public class Reloj{
                     for (Comprador comprador:local.getCompradoresSiendoAtendidos()){
                         compradoresRestantes++;
                         if ((comprador.getTiempoEnVentanilla() + comprador.getTiempoIngreso())<=tiempoTrascurrido){
+                            local.liberarVendedor(comprador.getVendedor());
                             local.getCompradoresSiendoAtendidos().remove(comprador);
                         }
                     }

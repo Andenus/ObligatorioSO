@@ -8,14 +8,14 @@ import java.util.concurrent.Semaphore;
  */
 public class Local {
 
-    List<Vendedor> vendedores;
-    List<Vendedor> vendedoresOcupados = new ArrayList<Vendedor>();
+    CopyOnWriteArrayList<Vendedor> vendedores;
+    CopyOnWriteArrayList<Vendedor> vendedoresOcupados = new CopyOnWriteArrayList<Vendedor>();
     private List<Comprador> compradores = new CopyOnWriteArrayList<Comprador>();
     private List<Comprador> compradoresSiendoAtendidos = new CopyOnWriteArrayList<Comprador>();
     String nombre;
     Semaphore vendedoresLibres; //inicializado en el JSON
 
-    public Local(List<Vendedor> vendedores, String nombre) {
+    public Local(CopyOnWriteArrayList<Vendedor> vendedores, String nombre) {
         this.vendedores = vendedores;
         vendedoresLibres = new Semaphore(vendedores.size());
         this.nombre = nombre;

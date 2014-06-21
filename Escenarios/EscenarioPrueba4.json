@@ -1,0 +1,76 @@
+{
+   "Escenario" :
+      {
+
+           "Espectaculos":[
+                        {
+               "lugar" : "Estadio Centenario",
+               "cantidadEntradas" : 200,
+               "nombre" : "Audioslave",
+               "fecha" : "2014/05/30,2014/05/31",
+                    "Zonas" :
+                        [
+                              {
+                                "nombre" : "zonaA",
+                                "cantFilas" : 10,
+                                "largoFila" : 10
+                                },
+                                {
+                                "nombre" : "zonaB",
+                                "cantFilas" : 10,
+                                "largoFila" : 10
+                                }
+                         ]
+                       }
+                      ],
+
+            "Locales":[
+               {
+                  "nombre" : "abitab",
+                  "Vendedores" :
+                      [
+                      {"id" : 1}
+                      ]
+               },
+               {
+                  "nombre" : "redPagos",
+                  "Vendedores" :
+                   [
+                       {"id" : 1},
+                       {"id" : 2},
+                   ]
+               }
+
+               ],
+         "Compradores" :
+            [
+                  {
+                     "tiempoIngreso":1,
+                     "lugarDeCompra" : "abitab",
+                     "idComprador" : 1,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 20,
+                     "espectaculo" : "Audioslave"
+                  },
+                  {
+                     "tiempoIngreso":10,
+                     "lugarDeCompra" : "abitab",
+                     "idComprador" : 2,
+                     "tipoComprador" : "",
+                     "zona" : "zonaA",
+                     "cantDeEntradas" : 60,
+                     "espectaculo" : "Audioslave"
+                  },
+                  {
+                     "tiempoIngreso":9,
+                     "lugarDeCompra" : "abitab",
+                     "idComprador" : 3,
+                     "tipoComprador" : "",
+                     "zona" : "zonaB",
+                     "cantDeEntradas" : 10,
+                     "espectaculo" : "Audioslave"
+                  }
+            ],
+      }
+}

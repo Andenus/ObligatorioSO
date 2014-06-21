@@ -11,22 +11,23 @@ public class Comprador extends Thread {
     private String zona;
     private int cantDeEntradas;
     private String espectaculo;
-    private String local;
+    private String nombreLocal;
+    private Local local;
     private Semaphore mutex = new Semaphore(1);
     private List<Entrada> asientosAsignados;
     private Double tiempoIngreso;
     private Vendedor vendedor;
     private Double tiempoEnVentanilla;
 
-    public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, String espectaculo, String local, Double tiempoIngreso) {
+    public Comprador(int idComprador, String tipoComprador, String zona, int cantDeEntradas, String espectaculo, String nombreLocal, Double tiempoIngreso) {
         this.setIdComprador(idComprador);
         this.setTipoComprador(tipoComprador);
         this.setZona(zona);
         this.setCantDeEntradas(cantDeEntradas);
         this.setEspectaculo(espectaculo);
-        this.setLocal(local);
+        this.setNombreLocal(nombreLocal);
         this.setTiempoIngreso(tiempoIngreso);
-        this.setTiempoEnVentanilla(2+(0.08*cantDeEntradas));
+        this.setTiempoEnVentanilla(2+(0.5*cantDeEntradas));
         if (this.getCantDeEntradas()>=50 && !this.getTipoComprador().equals("P")){
             this.setTipoComprador("GC");
         }
@@ -41,27 +42,33 @@ public class Comprador extends Thread {
     }
 
     public void run () {
-
-        comprar();
+        try {
+            setVendedor(getLocal().asignarVendedor());
+            local.getCompradores().remove(this);
+            local.getCompradoresSiendoAtendidos().add(this);
+            comprar();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
     public void  comprar() {
 
-        System.out.println("Comprador:" + getIdComprador() +", Esperando vendedor, Local:"+ getLocal()+", Zona:"+ getZona());
+        System.out.println("Comprador:" + getIdComprador() +", Esperando vendedor, Local:"+ getNombreLocal()+", Zona:"+ getZona());
 
-        System.out.println("Comprador:" + getIdComprador() +", Siendo atendido, Local:"+ getLocal()+", Zona:"+ getZona());
+        System.out.println("Comprador:" + getIdComprador() +", Siendo atendido, Local:"+ getNombreLocal()+", Zona:"+ getZona());
         asientosAsignados = getVendedor().vender(getZona(), getCantDeEntradas(), getEspectaculo());
 
-        System.out.println("Comprador:" + getIdComprador() +", Compra entradas("+ getCantDeEntradas() +"), Local:"+ getLocal()+", Zona:"+ getZona());
+        System.out.println("Comprador:" + getIdComprador() +", Compra entradas("+ getCantDeEntradas() +"), Local:"+ getNombreLocal()+", Zona:"+ getZona());
     }
 
-    public String getLocal() {
-        return local;
+    public String getNombreLocal() {
+        return nombreLocal;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
+    public void setNombreLocal(String nombreLocal) {
+        this.nombreLocal = nombreLocal;
     }
 
     public Vendedor getVendedor() {
@@ -126,5 +133,13 @@ public class Comprador extends Thread {
 
     public void setAsientosAsignados(List<Entrada> asientosAsignados) {
         this.asientosAsignados = asientosAsignados;
+    }
+
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
     }
 }
